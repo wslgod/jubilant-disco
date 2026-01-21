@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Delivery</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <h1>Sistema de Delivery</h1>
+      <p>Versões para entregadores e lojas em um único painel.</p>
+    </div>
+    <div class="role-switch" role="tablist">
+      <button class="role-button active" data-role="loja" role="tab" aria-selected="true">Loja</button>
+      <button class="role-button" data-role="entregador" role="tab" aria-selected="false">Entregador</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel panel-loja" data-panel="loja">
+      <div class="panel-header">
+        <h2>Painel da Loja</h2>
+        <p>Solicite entregadores, acompanhe pedidos e prioridade.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Solicitar Entregador</h3>
+          <form class="request-form" id="request-form">
+            <label>
+              Endereço de retirada
+              <input type="text" name="pickup" placeholder="Rua, número" required />
+            </label>
+            <label>
+              Endereço de entrega
+              <input type="text" name="dropoff" placeholder="Rua, número" required />
+            </label>
+            <label>
+              Tipo de pedido
+              <select name="type">
+                <option>Comida pronta</option>
+                <option>Mercado</option>
+                <option>Farmácia</option>
+              </select>
+            </label>
+            <label>
+              Prioridade
+              <select name="priority">
+                <option>Normal</option>
+                <option>Alta</option>
+                <option>Urgente</option>
+              </select>
+            </label>
+            <button type="submit" class="primary">Solicitar</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h3>Pedidos Ativos</h3>
+          <ul class="status-list" id="orders-list"></ul>
+        </article>
+
+        <article class="card">
+          <h3>Entregadores Disponíveis</h3>
+          <ul class="status-list" id="drivers-list"></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel panel-entregador" data-panel="entregador" hidden>
+      <div class="panel-header">
+        <h2>Painel do Entregador</h2>
+        <p>Veja chamadas disponíveis e acompanhe suas corridas.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Chamadas Disponíveis</h3>
+          <div class="callout" id="next-callout"></div>
+          <div class="actions">
+            <button class="primary" id="accept-call">Aceitar corrida</button>
+            <button class="ghost" id="decline-call">Recusar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Minha Rota</h3>
+          <ol class="timeline" id="route-timeline"></ol>
+        </article>
+
+        <article class="card">
+          <h3>Resumo do Dia</h3>
+          <div class="metrics">
+            <div>
+              <span class="metric-label">Entregas</span>
+              <span class="metric-value" id="metric-deliveries">8</span>
+            </div>
+            <div>
+              <span class="metric-label">Distância</span>
+              <span class="metric-value" id="metric-distance">32 km</span>
+            </div>
+            <div>
+              <span class="metric-label">Avaliação</span>
+              <span class="metric-value" id="metric-rating">4,9</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Dashboard de delivery - protótipo inicial.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
