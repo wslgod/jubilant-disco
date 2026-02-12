@@ -12,5 +12,6 @@ return [
     'cipher' => 'AES-256-CBC',
     'providers' => [
         App\Providers\AuthServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
     ],
 ];

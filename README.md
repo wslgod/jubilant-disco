@@ -2,21 +2,25 @@
 
 Plataforma SaaS educacional para preparação da OAB em Laravel 10+ com PHP 8.2.
 
-## Requisitos principais implementados
-- Landing page pública com planos Semestral/Anual e CTA “Começar agora”.
-- Autenticação (registro, login e solicitação de recuperação de senha).
-- Dashboard do aluno com menu lateral e histórico de materiais acessados.
-- Estrutura `Disciplina > Assunto > Materiais`.
-- Materiais dos tipos `pdf` e `resumo`.
-- PDFs privados em `storage/app/private_materials`, entregues por streaming autenticado e URL assinada temporária.
-- Controle de assinatura por middleware `CheckSubscription`.
-- Painel admin para disciplinas, assuntos, materiais, alunos e assinaturas.
-- Roles `admin` e `student`.
-- Seeder com admin padrão (`admin@boxoab.com` / `12345678`).
+## Importante: por que no GitHub aparece só este README?
+O GitHub **não executa PHP/Laravel como hospedagem da aplicação**. Ao abrir o repositório pelo navegador, você verá arquivos/README, não o sistema rodando.
 
-## Setup
+Para ver o sistema web, rode localmente (ou publique em servidor PHP com document root em `public/`).
+
+## Como executar localmente
 1. `cp .env.example .env`
-2. Configure MySQL no `.env`
-3. `php artisan key:generate`
-4. `php artisan migrate --seed`
-5. `php artisan serve`
+2. Ajuste banco MySQL no `.env`
+3. `composer install`
+4. `php artisan key:generate`
+5. `php artisan migrate --seed`
+6. `php artisan serve`
+7. Acesse `http://127.0.0.1:8000`
+
+## Deploy em hospedagem compartilhada
+- Aponte o domínio/subdomínio para a pasta `public/`
+- Mantenha `storage/app/private_materials` fora de acesso público
+- Garanta permissões de escrita em `storage/` e `bootstrap/cache/`
+
+## Credenciais admin padrão
+- E-mail: `admin@boxoab.com`
+- Senha: `12345678`
